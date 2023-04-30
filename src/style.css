@@ -95,3 +95,6 @@ button:focus-visible {
   margin: 0px;
   height: 100%;
 } */
+html,body{
+  overflow-x: hidden;
+}

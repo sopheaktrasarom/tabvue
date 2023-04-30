@@ -3,17 +3,51 @@ import { ref } from "vue";
 import data from "../data.json";
 const datas = ref(data);
 const active = ref(0);
-
+const showMenu = ref(false);
 /* change tab function */
 function activeTab(index: number) {
   active.value = index;
 }
+function toggleMenu() {
+  showMenu.value = !showMenu.value;
+}
 </script>
 <template>
-  <div class="px-[25px] bg-[#1E1E1E] pb-[50px]">
-    <div>
-      <h1 class="text-white text-center">MPAY Tutorial</h1>
-      <p class="text-[#BAAC97]">
+  <div class="px-[25px] pt-[35px] bg-[#1E1E1E] pb-[50px] w-full relative">
+    <!-- <header class="flex justify-between w-full items-center relative">
+      <div class="flex items-center justify-center">
+        <img
+          src="/logo.png"
+          alt=""
+          class="w-[50px] translate-y-[-11px] inline-block"
+        />
+      </div>
+
+      <div
+        class="menu w-[30px] flex flex-col gap-[5px] cursor-pointer"
+        @click="toggleMenu"
+      >
+        <div class="menu1 bg-white w-full h-[3px] rounded-[5px]"></div>
+        <div class="menu2 w-full bg-white h-[3px] rounded-[5px]"></div>
+        <div class="menu3 w-[70%] ml-auto bg-white h-[3px] rounded-[5px]"></div>
+      </div>
+    </header> -->
+    <div class="absolute right-[25px]">
+      <div
+        v-if="showMenu"
+        class="bg-white w-fit ml-auto grid place-items-center translate-y-[-30px] relative p-[50px]"
+      >
+        <p>Tutorial</p>
+        <div
+          class="bg-white right-[10px] w-[30px] h-[30px] top-[-5px] rotate-[45deg] absolute"
+        ></div>
+      </div>
+    </div>
+    <div class="mb-[40px]">
+      <h1 class="text-white text-center font-HevHelvetica text-[25px]">
+        MPAY Tutorial
+      </h1>
+      <p class="text-[#FFEBCD] font-HevHelvetica px-[35px] text-[14px]">
         Transactions done anywhere, anytime, across borders. Secured,efficient,
         untracable and unfreezable.
       </p>
@@ -22,7 +56,7 @@ function activeTab(index: number) {
     <div class="flex justify-evenly tab gap-[5px]">
       <button
         @click="activeTab(index)"
-        class="text-white button text-center font-bold px-[24px] py-[8px] text-base rounded-[8px]"
+        class="text-white button text-center font-bold px-[24px] py-[8px] text-[14px] rounded-[8px]"
         v-for="(data, index) in datas"
         :class="active === index ? `bg-[#EA792E] ` : `bg-[#1E2428] active`"
       >
@@ -31,23 +65,25 @@ function activeTab(index: number) {
     </div>
 
     <!-- Steps -->
-    <div class="step1 grid box mt-[35px]">
+    <div class="step1 grid box mt-[35px] gap-[50px]">
       <!-- Step1 -->
       <div
         v-for="(data, index) in datas"
         :class="active === index ? `animate-fadeIn ` : `hidden`"
       >
         <h1 class="step">{{ data.step1 }}</h1>
-        <p>{{ data.order1 }}</p>
+        <p class="order">{{ data.order1 }}</p>
         <div class="relative">
           <img :src="data.src1" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute top-[-63px] left-[40px] icon-left"
+            class="absolute icon-left"
             :class="[
-              data.header === 'Recharge' && `hidden`,
-              data.header === 'Buy' && `hidden`,
+              data.header === 'Verify' && `top-[-63px] left-[40px] verify`,
+              data.header === 'Buy' && `top-[80px] left-[70px]`,
+              data.header === 'Sell' && `top-[80px] right-0`,
+              data.header === 'Recharge' && `top-[120px] right-[50px]`,
             ]"
           />
         </div>
@@ -59,13 +95,19 @@ function activeTab(index: number) {
         :class="active === index ? `block ` : `hidden`"
       >
         <h1 class="step">{{ data.step2 }}</h1>
-        <p>{{ data.order2 }}</p>
+        <p class="order">{{ data.order2 }}</p>
         <div class="relative">
           <img :src="data.src2" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute top-[-23px] left-0 icon-left"
+            class="absolute icon-left"
+            :class="[
+              data.header === 'Verify' && `top-[150px] left-[80px]`,
+              data.header === 'Buy' && `top-[160px] left-0 right-[-120px]`,
+              data.header === 'Sell' && `top-[20px] left-[120px]`,
+              data.header === 'Recharge' && `top-0 right-[50px]`,
+            ]"
           />
         </div>
       </div>
@@ -76,13 +118,19 @@ function activeTab(index: number) {
         :class="active === index ? `block ` : `hidden`"
       >
         <h1 class="step">{{ data.step3 }}</h1>
-        <p>{{ data.order3 }}</p>
+        <p class="order">{{ data.order3 }}</p>
         <div class="relative">
           <img :src="data.src3" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute top-[-23px] left-0 icon-left"
+            class="absolute icon-left"
+            :class="[
+              data.header === 'Verify' && `top-[210px] left-[140px]`,
+              data.header === 'Buy' && `top-[120px] left-[80px]`,
+              data.header === 'Sell' && `top-[0px] right-[30px] `,
+              data.header === 'Recharge' && `top-[90px] right-[50px] `,
+            ]"
           />
         </div>
       </div>
@@ -93,13 +141,19 @@ function activeTab(index: number) {
         :class="active === index ? `block ` : `hidden`"
       >
         <h1 class="step">{{ data.step4 }}</h1>
-        <p>{{ data.order4 }}</p>
+        <p class="order">{{ data.order4 }}</p>
         <div class="relative">
           <img :src="data.src4" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute top-[-23px] left-0 icon-left"
+            class="absolute icon-left"
+            :class="[
+              data.header === 'Verify' && `bottom-[140px]  right-[80px]`,
+              data.header === 'Buy' && `top-[140px] left-[80px]`,
+              data.header === 'Sell' && `top-0 right-[50px]`,
+              data.header === 'Recharge' && `top-[100px] right-[80px]`,
+            ]"
           />
         </div>
       </div>
@@ -110,13 +164,19 @@ function activeTab(index: number) {
         :class="active === index ? `block ` : `hidden`"
       >
         <h1 class="step">{{ data.step5 }}</h1>
-        <p>{{ data.order5 }}</p>
+        <p class="order">{{ data.order5 }}</p>
         <div class="relative">
           <img :src="data.src5" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute top-[-23px] left-0 icon-left"
+            class="absolute icon-left"
+            :class="[
+              data.header === 'Verify' && `hidden`,
+              data.header === 'Buy' && `top-[190px] left-[160px]`,
+              data.header === 'Sell' && `hidden`,
+              data.header === 'Recharge' && `top-[-4px] right-[65px]`,
+            ]"
           />
         </div>
       </div>
@@ -127,13 +187,19 @@ function activeTab(index: number) {
         :class="active === index ? `block ` : `hidden`"
       >
         <h1 class="step">{{ data.step6 }}</h1>
-        <p>{{ data.order6 }}</p>
+        <p class="order">{{ data.order6 }}</p>
         <div class="relative">
           <img :src="data.src6" alt="" class="relative" />
           <img
             src="../assets/left_icon.png"
             alt=""
             class="absolute top-[-23px] left-0 icon-left"
+            :class="[
+              index === 0 && `hidden`,
+              data.header === 'Buy' && `top-[120px] left-[120px]`,
+              data.header === 'Recharge' && `hidden`,
+              data.header === 'Sell' && `hidden`,
+            ]"
           />
         </div>
       </div>
@@ -154,7 +220,7 @@ function activeTab(index: number) {
 button {
   font-family: '"Helvetica Neue", Helvetica, Arial';
 }
-p {
+.order {
   color: white;
   font-size: 18px;
   font-weight: 500;
@@ -180,23 +246,13 @@ img {
     transform: translate(0, 0);
   }
 }
-/* @media only screen and (max-width: 320px) {
+@media only screen and (max-width: 320px) {
+  .icon-left.verify {
+    left: 0;
+  }
   .button {
-    padding-inline: 10px;
+    font-size: 12px;
+    padding-inline: 18px;
   }
-  .tab {
-    gap: 5px;
-  }
-}
-@media only screen and (max-width: 420px) {
-  .button {
-    padding-inline: 20px;
-  }
-  .tab {
-    gap: 0px;
-  }
-} */
-.box {
-  gap: 35px;
 }
 </style>
