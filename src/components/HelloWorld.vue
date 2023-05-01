@@ -13,7 +13,7 @@ function toggleMenu() {
 }
 </script>
 <template>
-  <div class="px-[25px] pt-[35px] bg-[#1E1E1E] pb-[50px] w-full relative">
+  <div class="px-[25px] pt-[35px] tutorial pb-[50px] w-full relative">
     <!-- <header class="flex justify-between w-full items-center relative">
       <div class="flex items-center justify-center">
         <img
@@ -65,7 +65,7 @@ function toggleMenu() {
     </div>
 
     <!-- Steps -->
-    <div class="step1 grid box mt-[35px] gap-[50px]">
+    <div class="step1 grid box mt-[35px] gap-[60px] ">
       <!-- Step1 -->
       <div
         v-for="(data, index) in datas"
@@ -73,8 +73,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step1 }}</h1>
         <p class="order">{{ data.order1 }}</p>
-        <div class="relative">
-          <img :src="data.src1" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src1" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -96,8 +96,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step2 }}</h1>
         <p class="order">{{ data.order2 }}</p>
-        <div class="relative">
-          <img :src="data.src2" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src2" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -119,8 +119,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step3 }}</h1>
         <p class="order">{{ data.order3 }}</p>
-        <div class="relative">
-          <img :src="data.src3" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src3" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -142,8 +142,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step4 }}</h1>
         <p class="order">{{ data.order4 }}</p>
-        <div class="relative">
-          <img :src="data.src4" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src4" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -165,8 +165,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step5 }}</h1>
         <p class="order">{{ data.order5 }}</p>
-        <div class="relative">
-          <img :src="data.src5" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src5" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -188,8 +188,8 @@ function toggleMenu() {
       >
         <h1 class="step">{{ data.step6 }}</h1>
         <p class="order">{{ data.order6 }}</p>
-        <div class="relative">
-          <img :src="data.src6" alt="" class="relative" />
+        <div class="relative image_container">
+          <img :src="data.src6" alt="" class="relative phone" />
           <img
             src="../assets/left_icon.png"
             alt=""
@@ -208,6 +208,10 @@ function toggleMenu() {
 </template>
 
 <style scoped>
+.tutorial {
+  background-image: url("../assets/phone_bg.png");
+  background-size: 100%;
+}
 .step {
   color: #ffebcd;
   font-size: 25px;
@@ -222,7 +226,7 @@ button {
 }
 .order {
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   font-family: '"Helvetica Neue", Helvetica, Arial';
 }
@@ -254,5 +258,11 @@ img {
     font-size: 12px;
     padding-inline: 18px;
   }
+}
+.phone {
+  width: 100%;
+}
+.image_container{
+  padding-inline: 2rem;
 }
 </style>
