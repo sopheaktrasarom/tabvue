@@ -65,7 +65,7 @@ function toggleMenu() {
     </div>
 
     <!-- Steps -->
-    <div class="step1 grid box mt-[35px] gap-[60px] ">
+    <div class="step1 grid box mt-[35px] gap-[60px]">
       <!-- Step1 -->
       <div
         v-for="(data, index) in datas"
@@ -80,10 +80,12 @@ function toggleMenu() {
             alt=""
             class="absolute icon-left"
             :class="[
-              data.header === 'Verify' && `top-[-63px] left-[40px] verify`,
-              data.header === 'Buy' && `top-[80px] left-[70px]`,
-              data.header === 'Sell' && `top-[80px] right-0`,
-              data.header === 'Recharge' && `top-[120px] right-[50px]`,
+              data.header === 'Verify' &&
+                `top-[-63px] left-[40px] verify_step1`,
+              data.header === 'Buy' && `top-[80px] left-[70px] buy_step1`,
+              data.header === 'Sell' && `top-[80px] right-0 sell_step1`,
+              data.header === 'Recharge' &&
+                `top-[120px] right-[50px] recharge_step1`,
             ]"
           />
         </div>
@@ -103,10 +105,12 @@ function toggleMenu() {
             alt=""
             class="absolute icon-left"
             :class="[
-              data.header === 'Verify' && `top-[150px] left-[80px]`,
-              data.header === 'Buy' && `top-[160px] left-0 right-[-120px]`,
-              data.header === 'Sell' && `top-[20px] left-[120px]`,
-              data.header === 'Recharge' && `top-0 right-[50px]`,
+              data.header === 'Verify' &&
+                `top-[150px] left-[80px] verify_step2`,
+              data.header === 'Buy' &&
+                `top-[160px] left-0  right-[-200px] buy_step2`,
+              data.header === 'Sell' && `top-[20px] left-[120px] sell_step2`,
+              data.header === 'Recharge' && `top-0 right-[50px] recharge_step2`,
             ]"
           />
         </div>
@@ -124,12 +128,14 @@ function toggleMenu() {
           <img
             src="../assets/left_icon.png"
             alt=""
-            class="absolute icon-left"
+            class="absolute icon-left top-0"
             :class="[
-              data.header === 'Verify' && `top-[210px] left-[140px]`,
-              data.header === 'Buy' && `top-[120px] left-[80px]`,
-              data.header === 'Sell' && `top-[0px] right-[30px] `,
-              data.header === 'Recharge' && `top-[90px] right-[50px] `,
+              data.header === 'Verify' &&
+                ` verify_step3 top-[210px] left-[120px]`,
+              data.header === 'Buy' && `top-[120px] left-[80px] buy_step3`,
+              data.header === 'Sell' && `top-[0px] right-[50px] sell_step3`,
+              data.header === 'Recharge' &&
+                `top-[90px] right-[50px] recharge_step3 `,
             ]"
           />
         </div>
@@ -149,10 +155,13 @@ function toggleMenu() {
             alt=""
             class="absolute icon-left"
             :class="[
-              data.header === 'Verify' && `bottom-[140px]  right-[80px]`,
-              data.header === 'Buy' && `top-[140px] left-[80px]`,
-              data.header === 'Sell' && `top-0 right-[50px]`,
-              data.header === 'Recharge' && `top-[100px] right-[80px]`,
+              data.header === 'Verify' &&
+                `bottom-[140px]  right-[80px] verify_step4`,
+              data.header === 'Buy' && `top-[140px] left-[100px] buy_step4`,
+
+              data.header === 'Sell' && `top-0 right-[50px] sell_step4`,
+              data.header === 'Recharge' &&
+                `top-[100px] right-[50px] recharge_step4`,
             ]"
           />
         </div>
@@ -173,9 +182,11 @@ function toggleMenu() {
             class="absolute icon-left"
             :class="[
               data.header === 'Verify' && `hidden`,
-              data.header === 'Buy' && `top-[190px] left-[160px]`,
+              data.header === 'Buy' && ` top-[200px] left-[180px] buy_step5`,
+
               data.header === 'Sell' && `hidden`,
-              data.header === 'Recharge' && `top-[-4px] right-[65px]`,
+              data.header === 'Recharge' &&
+                `top-[-4px] right-[65px] recharge_step5`,
             ]"
           />
         </div>
@@ -195,10 +206,11 @@ function toggleMenu() {
             alt=""
             class="absolute top-[-23px] left-0 icon-left"
             :class="[
-              index === 0 && `hidden`,
-              data.header === 'Buy' && `top-[120px] left-[120px]`,
-              data.header === 'Recharge' && `hidden`,
-              data.header === 'Sell' && `hidden`,
+              data.header === 'Verify' && `hidden`,
+              data.header === 'Buy' && `top-[130px] left-[120px] buy_step6`,
+
+              data.header === 'Recharge' && `hidden recharge_step6`,
+              data.header === 'Sell' && `hidden `,
             ]"
           />
         </div>
@@ -250,19 +262,184 @@ img {
     transform: translate(0, 0);
   }
 }
-@media only screen and (max-width: 320px) {
-  .icon-left.verify {
-    left: 0;
+@media (max-width: 320px) {
+  .order {
+    font-size: 15px;
   }
   .button {
     font-size: 12px;
     padding-inline: 18px;
   }
+  .verify_step1.icon-left {
+    top: -70px;
+    left: 25px;
+  }
+  .verify_step2.icon-left {
+    top: 100px;
+  }
+  .verify_step3.icon-left {
+    top: 150px;
+    left: 100px;
+  }
+  .verify_step4.icon-left {
+    top: 160px;
+    left: 100px;
+  }
+
+  .buy_step1.icon-left {
+    top: 45px;
+    left: 60px;
+  }
+  .buy_step2.icon-left {
+    top: 110px;
+    right: -170px;
+    left: 0;
+  }
+  .buy_step3.icon-left {
+    top: 80px;
+
+    left: 50px;
+  }
+  .buy_step4.icon-left {
+    top: 80px;
+
+    left: 80px;
+  }
+  .buy_step5.icon-left {
+    top: 130px;
+
+    left: 120px;
+  }
+  .buy_step6.icon-left {
+    top: 80px;
+
+    left: 100px;
+  }
+  .sell_step1.icon-left {
+    top: 50px;
+    left: 100px;
+  }
+  .sell_step2.icon-left {
+    top: -3px;
+    left: 90px;
+  }
+  .sell_step3.icon-left {
+    top: -30px;
+    right: 30px;
+  }
+  .sell_step4.icon-left {
+    top: -30px;
+    right: 30px;
+  }
+  .recharge_step2.icon-left {
+    top: -30px;
+  }
+  .recharge_step3.icon-left {
+    top: 50px;
+    left: 120px;
+  }
+  .recharge_step4.icon-left {
+    top: 50px;
+    left: 120px;
+  }
+  .recharge_step5.icon-left {
+    top: -30px;
+    left: 120px;
+  }
+}
+
+@media (min-width: 389px) {
+  .verify_step2.icon-left {
+    top: 170px;
+  }
+  .verify_step3.icon-left {
+    top: 240px;
+    left: 150px;
+  }
+  .verify_step4.icon-left {
+    top: 250px;
+    left: 120px;
+  }
+  .buy_step1.icon-left {
+    top: 100px;
+    left: 80px;
+  }
+  .buy_step2.icon-left {
+    top: 180px;
+    left: 0px;
+    right: -250px;
+  }
+  .buy_step3.icon-left {
+    top: 140px;
+    left: 80px;
+  }
+  .buy_step4.icon-left {
+    top: 160px;
+    left: 120px;
+  }
+  .buy_step5.icon-left {
+    top: 220px;
+    left: 180px;
+  }
+  .buy_step6.icon-left {
+    top: 150px;
+    left: 150px;
+  }
+  .sell_step1.icon-left {
+    top: 100px;
+    left: 180px;
+  }
+  .sell_step2.icon-left {
+    top: 30px;
+    left: 120px;
+  }
+  .recharge_step1.icon-left {
+    top: 200px;
+  }
+  .recharge_step3.icon-left {
+    top: 120px;
+  }
+  .recharge_step4.icon-left {
+    top: 120px;
+  }
+}
+@media (min-width: 424px) {
+  .verify_step2.icon-left {
+    top: 210px;
+  }
+  .verify_step3.icon-left {
+    top: 280px;
+  }
+  .verify_step4.icon-left {
+    top: 300px;
+    left: 120px;
+  }
+  .buy_step3.icon-left {
+    top: 180px;
+
+    left: 80px;
+  }
+  .buy_step4.icon-left {
+    top: 180px;
+  }
+  .buy_step5.icon-left {
+    top: 250px;
+  }
+  .buy_step6.icon-left {
+    top: 180px;
+  }
+  .sell_step1.icon-left {
+    top: 120px;
+  }
+  .sell_step2.icon-left {
+    top: 50px;
+    left: 140px;
+  }
 }
 .phone {
   width: 100%;
 }
-.image_container{
+.image_container {
   padding-inline: 2rem;
 }
 </style>
